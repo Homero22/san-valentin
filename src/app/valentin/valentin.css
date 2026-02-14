@@ -14,26 +14,51 @@
 .valentine-container {
   width: 100%;
   height: 100%;
-  /* Imagen completa sin recortes */
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/fondo.jpeg');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   font-family: 'Quicksand', sans-serif;
   overflow: hidden;
 }
 
+/* Video Background Styles */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: -1;
+}
+
+/* Base style for content */
+.content {
+  text-align: center;
+  z-index: 10;
+  padding: 2.5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  width: 90%;
+  max-width: 500px;
+}
+
 /* PC Enhancements */
 @media (min-width: 601px) {
-  .valentine-container {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/fondo2.jpeg');
-    background-size: 100% 100%;
-  }
-
   .content {
     padding: 3.5rem 2.5rem;
     max-width: 650px;
@@ -50,20 +75,6 @@
     padding: 1.5rem 3.5rem !important;
     font-size: 2rem !important;
   }
-}
-
-.content {
-  text-align: center;
-  z-index: 10;
-  padding: 2.5rem 1.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  /* Overlay oscuro suave para legibilidad */
-  backdrop-filter: blur(2px);
-  border-radius: 40px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  width: 90%;
-  max-width: 500px;
 }
 
 .title-img {
@@ -98,7 +109,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   white-space: nowrap;
-  /* Asegura que el emoji esté al lado */
 }
 
 .btn-si {
@@ -127,7 +137,6 @@
   color: white;
   box-shadow: 0 0 25px rgba(255, 77, 109, 0.9);
   transition: all 0.25s ease-out;
-  /* Movimiento más fluido */
   border: 2px solid white;
 }
 
@@ -145,7 +154,7 @@
   position: absolute;
   width: 100px;
   height: 100px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
   clip-path: path('M50 20 C20 0 0 30 50 80 C100 30 80 0 50 20');
   animation: float 10s linear infinite;
 }
@@ -195,6 +204,10 @@
 @keyframes float {
   0% {
     transform: translateY(110vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
     opacity: 1;
   }
 
