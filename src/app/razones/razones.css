@@ -249,15 +249,17 @@
 
     /* Rediseño del corazón para evitar recortes */
     .btn-next {
-        margin: 50px auto 30px auto;
+        margin: 60px auto 30px auto;
         width: 70px;
         height: 70px;
         background: #ff4d6d;
         position: relative;
         transform: rotate(-45deg);
         border: none;
-        display: block;
-        /* Cambiamos de flex a block para control total */
+        display: flex;
+        /* Flex para centrado automático */
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         z-index: 1000;
         animation: heart-beat 1.5s infinite;
@@ -285,18 +287,18 @@
     }
 
     .btn-next span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-        /* Centrado absoluto */
-        width: 100px;
+        /* Eliminamos posicionamiento absoluto para que flexbox trabaje */
+        transform: rotate(45deg) translate(5px, -12px);
+        /* Subimos más el texto hacia los lóbulos */
         color: white;
         text-align: center;
         font-weight: 800;
         font-size: 0.85rem;
         z-index: 20;
-        line-height: 1.1;
+        line-height: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        /* Que el click pase al botón */
     }
 
     @keyframes heart-beat {
