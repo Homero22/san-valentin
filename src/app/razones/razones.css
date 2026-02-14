@@ -247,70 +247,31 @@
         font-size: 1.2rem;
     }
 
-    /* Rediseño del corazón para evitar recortes */
+    /* Botón normal pero premium para Mobile */
     .btn-next {
-        margin: 60px auto 30px auto;
-        width: 70px;
-        height: 70px;
-        background: #ff4d6d;
-        position: relative;
-        transform: rotate(-45deg);
+        margin: 1.5rem auto 1rem auto;
+        padding: 0.8rem 2rem;
+        background: linear-gradient(135deg, #ff4d6d, #ff758f);
+        color: white;
         border: none;
-        display: flex;
-        /* Flex para centrado automático */
-        justify-content: center;
-        align-items: center;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
         cursor: pointer;
         z-index: 1000;
-        animation: heart-beat 1.5s infinite;
-        box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
-    }
-
-    .btn-next::before,
-    .btn-next::after {
-        content: "";
-        width: 70px;
-        height: 70px;
-        background: #ff4d6d;
-        border-radius: 50%;
-        position: absolute;
-    }
-
-    .btn-next::before {
-        top: -35px;
-        left: 0;
-    }
-
-    .btn-next::after {
-        top: 0;
-        left: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
     }
 
     .btn-next span {
-        /* Eliminamos posicionamiento absoluto para que flexbox trabaje */
-        transform: rotate(45deg) translate(5px, -12px);
-        /* Subimos más el texto hacia los lóbulos */
+        transform: none;
+        /* Reset rotation */
         color: white;
-        text-align: center;
         font-weight: 800;
-        font-size: 0.85rem;
-        z-index: 20;
-        line-height: 1;
-        white-space: nowrap;
-        pointer-events: none;
-        /* Que el click pase al botón */
-    }
-
-    @keyframes heart-beat {
-
-        0%,
-        100% {
-            transform: scale(1) rotate(-45deg);
-        }
-
-        50% {
-            transform: scale(1.1) rotate(-45deg);
-        }
+        font-size: 1rem;
     }
 
     .btn-back {
