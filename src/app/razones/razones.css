@@ -145,6 +145,7 @@
     transform: translateY(-5px);
 }
 
+/* Flicker PC: con zoom y profundidad */
 @keyframes flicker-pc {
 
     0%,
@@ -168,6 +169,7 @@
     }
 }
 
+/* Flicker Static (Used for Mobile) */
 @keyframes flicker-static {
 
     0%,
@@ -183,6 +185,7 @@
     }
 }
 
+/* Patrón de parpadeo ultra rápido para Mobile */
 @keyframes flicker-fast {
 
     0%,
@@ -228,6 +231,7 @@
     .reason-star {
         position: absolute !important;
         width: 46%;
+        /* Animación mucho más corta para que se sienta rápido */
         animation: flicker-fast 2.5s infinite ease-in-out !important;
     }
 
