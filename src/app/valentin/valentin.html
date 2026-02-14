@@ -3,6 +3,13 @@
         <div class="heart" *ngFor="let i of [1,2,3,4,5,6]"></div>
     </div>
 
+    <!-- El botón NO se mueve por fuera del panel para mayor libertad -->
+    <button *ngIf="isMoved" class="btn btn-no is-moved"
+        [ngStyle]="{'top': noButtonPosition.top, 'left': noButtonPosition.left}" (mouseover)="moveNoButton()"
+        (touchstart)="moveNoButton()" (click)="moveNoButton()">
+        ¡AHORA NO! 💔
+    </button>
+
     <div class="content">
         <img src="/letras.png" alt="¿Quieres ser mi San Valentín?" class="title-img">
 
@@ -11,9 +18,9 @@
                 SI ❤️
             </button>
 
-            <button class="btn btn-no" [ngClass]="{'is-moved': isMoved}"
-                [ngStyle]="isMoved ? {'top': noButtonPosition.top, 'left': noButtonPosition.left} : {}"
-                (mouseover)="moveNoButton()" (touchstart)="moveNoButton()" (click)="moveNoButton()">
+            <!-- Este botón desaparece del panel original al activarse -->
+            <button *ngIf="!isMoved" class="btn btn-no" (mouseover)="moveNoButton()" (touchstart)="moveNoButton()"
+                (click)="moveNoButton()">
                 NO 💔
             </button>
         </div>

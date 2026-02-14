@@ -116,13 +116,19 @@
   background: white;
   color: var(--valentine-red);
   position: relative;
-  transition: all 0.2s ease;
   z-index: 1000;
 }
 
 .btn-no.is-moved {
-  position: fixed;
+  position: absolute;
   pointer-events: auto;
+  z-index: 9999;
+  background: #ff4d6d;
+  color: white;
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.9);
+  transition: all 0.25s ease-out;
+  /* Movimiento más fluido */
+  border: 2px solid white;
 }
 
 /* Background Hearts */
@@ -236,9 +242,5 @@
     width: 95%;
     padding: 2rem 1rem;
     border-radius: 30px;
-  }
-
-  .btn-no {
-    position: relative;
   }
 }

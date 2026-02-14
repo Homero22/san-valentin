@@ -21,14 +21,14 @@ export class Valentin {
 
   moveNoButton() {
     this.isMoved = true;
-    // Rango más seguro para que no se salga de la pantalla (especialmente en móvil)
-    // Manteniéndolo entre 15% y 75% de la pantalla
-    const randomTop = Math.floor(Math.random() * 60) + 15;
-    const randomLeft = Math.floor(Math.random() * 60) + 15;
+    // Usamos porcentajes relativos al contenedor padre (valentine-container)
+    // para un control total y evitar que se pierda en el viewport
+    const randomTop = Math.floor(Math.random() * 70) + 10; // 10% a 80%
+    const randomLeft = Math.floor(Math.random() * 70) + 10; // 10% a 80%
 
     this.noButtonPosition = {
-      top: `${randomTop}vh`,
-      left: `${randomLeft}vw`
+      top: `${randomTop}%`,
+      left: `${randomLeft}%`
     };
   }
 }
