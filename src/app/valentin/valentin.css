@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap');
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  --primary-pink: #ffafbd;
+  --secondary-pink: #ffc3a0;
+  --valentine-red: #e91e63;
+  --deep-red: #c2185b;
+}
+
+.valentine-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 175, 189, 0.4), rgba(255, 195, 160, 0.4)), url('/fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+}
+
+.content {
+  text-align: center;
+  z-index: 10;
+  padding: 2.5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  /* backdrop-filter: blur(10px); */
+  border-radius: 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  width: 90%;
+  max-width: 500px;
+  /* Default for mobile/small screens */
+}
+
+/* PC Enhancements */
+@media (min-width: 1024px) {
+  .content {
+    padding: 3.5rem 2.5rem;
+    max-width: 650px;
+    width: 650px;
+    border-radius: 50px;
+  }
+
+  .title-img {
+    max-width: 450px !important;
+    margin-bottom: 3.5rem !important;
+  }
+
+  .btn {
+    padding: 1.5rem 3.5rem !important;
+    font-size: 2rem !important;
+  }
+}
+
+.title-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 3rem;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+  animation: beat 1.5s ease-in-out infinite;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Alineado verticalmente */
+  gap: 2rem;
+  min-height: 100px;
+  position: relative;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  /* Más pequeños inicialmente */
+  font-size: 1.4rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-si {
+  background: var(--valentine-red);
+  color: white;
+}
+
+.btn-si:hover {
+  transform: scale(1.15);
+  background: var(--deep-red);
+  box-shadow: 0 15px 30px rgba(233, 30, 99, 0.4);
+}
+
+.btn-no {
+  background: white;
+  color: var(--valentine-red);
+  position: relative;
+  /* Empiezan alineados en el flujo */
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.btn-no.is-moved {
+  position: fixed;
+  /* Se vuelve loco por toda la pantalla */
+  pointer-events: auto;
+}
+
+/* Background Hearts */
+.background-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.4);
+  clip-path: path('M50 20 C20 0 0 30 50 80 C100 30 80 0 50 20');
+  animation: float 10s linear infinite;
+}
+
+.heart:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  width: 40px;
+  height: 40px;
+}
+
+.heart:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+  width: 60px;
+  height: 60px;
+}
+
+.heart:nth-child(3) {
+  left: 50%;
+  animation-delay: 4s;
+  width: 30px;
+  height: 30px;
+}
+
+.heart:nth-child(4) {
+  left: 70%;
+  animation-delay: 6s;
+  width: 80px;
+  height: 80px;
+}
+
+.heart:nth-child(5) {
+  left: 85%;
+  animation-delay: 8s;
+  width: 50px;
+  height: 50px;
+}
+
+.heart:nth-child(6) {
+  left: 20%;
+  animation-delay: 5s;
+  width: 70px;
+  height: 70px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes beat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .title-img {
+    max-width: 280px;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    width: auto;
+    /* Ancho automático para que quepan al lado */
+    min-width: 100px;
+  }
+
+  .buttons-container {
+    flex-direction: row;
+    /* Mantener al lado */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    min-height: 100px;
+    flex-wrap: nowrap;
+    /* Evitar que se pongan uno encima de otro */
+  }
+
+  .content {
+    width: 95%;
+    padding: 2rem 1rem;
+    border-radius: 30px;
+  }
+
+  .btn-no {
+    /* Quitamos el fixed de aquí para que herede el comportamiento de PC:
+       empieza relative y cambia a fixed solo cuando se mueve */
+    position: relative;
+  }
+}

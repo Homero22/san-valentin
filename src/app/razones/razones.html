@@ -1,0 +1,27 @@
+<div class="razones-container">
+    <!-- Video Background -->
+    <video class="video-bg" autoplay loop muted playsinline>
+        <source src="/video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <div class="content"
+        [style.transform]="'perspective(1200px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)'">
+        <h1 class="title">¡Sabía que dirías que SI! ❤️</h1>
+        <p class="subtitle">Cada una de estas estrellas aparece solo para ti:</p>
+
+        <div class="reasons-stars">
+            <!-- Usamos displayedReasons que se actualiza por botes -->
+            <div class="reason-star" *ngFor="let reason of displayedReasons; let i = index"
+                [style.top]="starConfigs[i].top" [style.left]="starConfigs[i].left"
+                [style.animation-delay]="starConfigs[i].delay" [style.animation-duration]="starConfigs[i].duration">
+                <div class="star-content">
+                    <span class="star-emoji">{{ reason.emoji }}</span>
+                    <p class="reason-text">{{ reason.text }}</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-back" (click)="goBack()">Volver 🏠</button>
+    </div>
+</div>
