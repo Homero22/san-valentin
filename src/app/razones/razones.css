@@ -65,7 +65,7 @@
 .subtitle {
     color: #ffb3c1;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
@@ -79,8 +79,7 @@
 
 .reason-star {
     position: absolute;
-    animation: flicker-pc infinite ease-in-out;
-    /* PC usa flicker con zoom */
+    animation: flicker-pc 5s infinite ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,8 +102,7 @@
 }
 
 .star-content:hover {
-    transform: scale(1.2) translateZ(100px);
-    /* Restauramos zoom potente en PC al pasar el mouse */
+    transform: scale(1.15) translateZ(50px);
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.4);
     z-index: 1000;
@@ -147,7 +145,6 @@
     transform: translateY(-5px);
 }
 
-/* Flicker PC: con zoom y profundidad */
 @keyframes flicker-pc {
 
     0%,
@@ -171,7 +168,6 @@
     }
 }
 
-/* Flicker Mobile: estático, solo opacidad */
 @keyframes flicker-static {
 
     0%,
@@ -187,16 +183,37 @@
     }
 }
 
+@keyframes flicker-fast {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    20%,
+    80% {
+        opacity: 1;
+    }
+}
+
+.mobile-only {
+    display: none;
+}
+
 /* Mobile adjustments */
 @media (max-width: 600px) {
+    .mobile-only {
+        display: block;
+    }
+
     .title {
-        font-size: 2rem;
-        margin-top: 0.5rem;
+        font-size: 1.8rem;
+        margin-top: 0.3rem;
     }
 
     .subtitle {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
     }
 
     .reasons-stars {
@@ -205,39 +222,100 @@
         width: 100%;
         position: relative;
         overflow: hidden;
-        min-height: 400px;
+        min-height: 480px;
     }
 
     .reason-star {
         position: absolute !important;
         width: 46%;
-        animation: flicker-static 9s infinite ease-in-out !important;
-        /* Mobile sin zoom */
+        animation: flicker-fast 2.5s infinite ease-in-out !important;
     }
 
     .star-content {
         width: 100%;
-        padding: 0.7rem;
-        gap: 0.4rem;
+        padding: 0.5rem;
+        gap: 0.3rem;
         background: rgba(255, 255, 255, 0.15);
-        border-radius: 20px;
-    }
-
-    .star-content:hover {
-        transform: none;
-        /* Sin zoom en mobile */
-    }
-
-    .star-emoji {
-        font-size: 1.4rem;
+        border-radius: 15px;
     }
 
     .reason-text {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
+    }
+
+    .star-emoji {
+        font-size: 1.2rem;
+    }
+
+    /* Rediseño del corazón para evitar recortes */
+    .btn-next {
+        margin: 50px auto 30px auto;
+        width: 70px;
+        height: 70px;
+        background: #ff4d6d;
+        position: relative;
+        transform: rotate(-45deg);
+        border: none;
+        display: block;
+        /* Cambiamos de flex a block para control total */
+        cursor: pointer;
+        z-index: 1000;
+        animation: heart-beat 1.5s infinite;
+        box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+    }
+
+    .btn-next::before,
+    .btn-next::after {
+        content: "";
+        width: 70px;
+        height: 70px;
+        background: #ff4d6d;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .btn-next::before {
+        top: -35px;
+        left: 0;
+    }
+
+    .btn-next::after {
+        top: 0;
+        left: 35px;
+    }
+
+    .btn-next span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-30%, -60%) rotate(45deg);
+        /* Ajuste manual del centro visual */
+        width: 90px;
+        color: white;
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.8rem;
+        z-index: 20;
+        line-height: 1.1;
+    }
+
+    @keyframes heart-beat {
+
+        0%,
+        100% {
+            transform: scale(1) rotate(-45deg);
+        }
+
+        50% {
+            transform: scale(1.1) rotate(-45deg);
+        }
     }
 
     .btn-back {
-        margin: 1rem auto;
-        padding: 0.8rem 2rem;
+        margin: 0.3rem auto;
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
