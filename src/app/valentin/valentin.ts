@@ -21,9 +21,10 @@ export class Valentin {
 
   moveNoButton() {
     this.isMoved = true;
-    // Usamos viewport units para que se mueva por toda la pantalla de forma agresiva
-    const randomTop = Math.floor(Math.random() * 70) + 5; // 5vh a 75vh
-    const randomLeft = Math.floor(Math.random() * 70) + 5; // 5vw a 75vw
+    // Rango más seguro para que no se salga de la pantalla (especialmente en móvil)
+    // Manteniéndolo entre 15% y 75% de la pantalla
+    const randomTop = Math.floor(Math.random() * 60) + 15;
+    const randomLeft = Math.floor(Math.random() * 60) + 15;
 
     this.noButtonPosition = {
       top: `${randomTop}vh`,
