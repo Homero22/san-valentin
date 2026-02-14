@@ -288,13 +288,13 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-30%, -60%) rotate(45deg);
-        /* Ajuste manual del centro visual */
-        width: 90px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        /* Centrado absoluto */
+        width: 100px;
         color: white;
         text-align: center;
         font-weight: 800;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         z-index: 20;
         line-height: 1.1;
     }
